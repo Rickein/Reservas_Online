@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas Online</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.4/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+</head>
+
+<body>
+    <%- include('header.ejs') %>
+        <main>
+            <div class="conteudo">
+                <div class="container-img index">
+                </div>
+                <div class="container-form">
+                    <form action="" class="form">
+
+                        <div class="form-input">
+                            <label for="locais">Local</label>
+                            <select class="form-options" name="locais" id="locais">
+                                <option value="">Escolha o Local</option>
+                                <% espacos.forEach(function(item) { %>
+                                    <option value='<%=item.id_espacos%>'>
+                                        <%= item.local%>
+                                    </option>
+                                    <% }); %>
+                            </select>
+
+                        </div>
+
+                        <div class="form-input">
+                            <label for="locais">Data</label>
+                            <input type="text" class="form-options" name="date" id="datepicker"
+                                placeholder="Escolha a Data">
+                        </div>
+
+                        <div class="form-input">
+                            <button class="btn btn-secondary btn-index" type="button"
+                                onclick="PesquisarReserva();"><span>Pesquisar</span><img
+                                    src="/public/img/icons8-search-30.png"></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="container-outros">
+                    <button class="btn btn-outline-secondary" onclick="MinhasReservas()"><img
+                            src="/public/img/icons8-hour-30.png" /><span>Minhas
+                            Reservas</span></button>
+                    <button class="btn btn-outline-secondary" onclick="GestaoDeEspacos()"><img
+                            src="/public/img/icons8-date-30.png" /><span>Gestão
+                            de
+                            Espaços</span></button>
+                    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#modal-ajuda"><img
+                            src="/public/img/icons8-help-30.png"><span>Ajuda</span></button>
+                </div>
+
+                <div class="container-infos">
+                    <div class="section">
+                        <div class="title"><span>Facilidade de Reserva</span></div>
+                        <div class="description">
+                            <p>Oferecemos aos clientes a conveniência de fazer reservas instantâneas a
+                                qualquer hora do dia</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="title"><span>Reservas Simplificada</span></div>
+                        <div class="description">
+                            <p>Os clientes podem facilmente visualizar, modificar ou cancelar suas
+                                reservas</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="title"><span>Gestão de Espaços</span></div>
+                        <div class="description">
+                            <p>Interface intuitiva para gerenciar os espaços disponíveis para reserva</p>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="title"><span>Maior Controle</span></div>
+                        <div class="description">
+                            <p>O site permite controlar a disponibilidade de cada espaço em tempo real</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        <div class="modal fade" id="modal-ajuda" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Ajuda <img src="/public/img/icons8-help-30.png"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sessao-duvidas">
+                            <div class="title">Formulário</div>
+                            <div class="description">Preencha o formulário com o local desejado e a data para sua
+                                reserva.
+                                Clique no botão de pesquisa para verificar os horários disponíveis.
+                                Escolha o horário que melhor se adequa às suas necessidades e prossiga com a reserva.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sessao-duvidas">
+                            <div class="title">Minhas Reservas</div>
+                            <div class="description">Clique no botão "Minhas Reservas" para visualizar todas as
+                                reservas feitas no sistema.
+                                Você poderá ver informações como local, data e horário das reservas já realizadas.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sessao-duvidas">
+                            <div class="title">Gestão de Espaços</div>
+                            <div class="description">Utilize o botão "Gestão de Espaços" para ver uma lista de todos os
+                                locais disponíveis para reserva no sistema.
+                                Você pode gerenciar cada local cadastrado.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.4/js/dataTables.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script src="/src/scripts/reservasOnline.js"></script>

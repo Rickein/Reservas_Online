@@ -1,0 +1,25 @@
+{
+  "name": "reservas_online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rick Goncalves",
+  "license": "ISC",
+  "dependencies": {
+    "add": "^2.0.6",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "pg": "^8.11.5",
+    "sass": "^1.76.0",
+    "sequelize": "^6.37.3",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  }
+}

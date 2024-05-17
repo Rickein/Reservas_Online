@@ -1,0 +1,867 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Reservas Online",
+        "descripition": "Documentação de atividade do curso de pós-graduação em Dev Foundations da FIAP",
+        "version": "1.0.0"
+    },
+    "basePatch": "/",
+    "paths": {
+        "/usuarios": {
+            "get": {
+                "summary": "Obtém a lista de usuários",
+                "description": "Retorna uma lista de todos os usuários.",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso ao obter a lista de usuários",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "usuarios": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "usuario_id": {
+                                                        "type": "integer",
+                                                        "description": "O identificador único do usuário",
+                                                        "example": 1
+                                                    },
+                                                    "nome": {
+                                                        "type": "string",
+                                                        "description": "O nome do usuário",
+                                                        "example": "João da Silva"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "format": "email",
+                                                        "description": "O email do usuário",
+                                                        "example": "joao@example.com"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Usuários"
+                ]
+            }
+        },
+        "/usuarios/{id}": {
+            "get": {
+                "summary": "Obtém um usuário por ID",
+                "description": "Retorna os detalhes de um usuário com o ID especificado.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "ID do usuário a ser obtido"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso ao obter o usuário por ID",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "usuarios": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "usuario_id": {
+                                                        "type": "integer",
+                                                        "description": "O identificador único do usuário",
+                                                        "example": 1
+                                                    },
+                                                    "nome": {
+                                                        "type": "string",
+                                                        "description": "O nome do usuário",
+                                                        "example": "João da Silva"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "format": "email",
+                                                        "description": "O email do usuário",
+                                                        "example": "joao@example.com"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "sem resultados"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Usuários"
+                ]
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Criar um novo usuário",
+                "description": "Cria um novo usuário com as informações fornecidas.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Nome": {
+                                        "type": "string",
+                                        "description": "O nome do novo usuário"
+                                    },
+                                    "Email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "O email do novo usuário"
+                                    },
+                                    "Senha": {
+                                        "type": "string",
+                                        "description": "A senha do novo usuário"
+                                    }
+                                },
+                                "required": [
+                                    "Nome",
+                                    "Email",
+                                    "Senha"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "criado"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro ao criar usuário",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "erro"
+                                        },
+                                        "mensagem": {
+                                            "type": "string",
+                                            "example": "Mensagem de erro"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Login"
+                ]
+            }
+        },
+        "/login/validaLogin": {
+            "post": {
+                "summary": "Validar login do usuário",
+                "description": "Verifica se as credenciais de login fornecidas são válidas.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "O email do usuário"
+                                    },
+                                    "Senha": {
+                                        "type": "string",
+                                        "description": "A senha do usuário"
+                                    }
+                                },
+                                "required": [
+                                    "Email",
+                                    "Senha"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login bem-sucedido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "logado"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Credenciais inválidas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "invalido"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Login"
+                ]
+            }
+        },
+        "/gestaoEspaco/espacos": {
+            "get": {
+                "summary": "Obter espaços",
+                "description": "Obtém uma lista de todos os espaços disponíveis.",
+                "responses": {
+                    "200": {
+                        "description": "Espaços obtidos com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "espacos": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id_espacos": {
+                                                        "type": "integer",
+                                                        "description": "O identificador único do espaço"
+                                                    },
+                                                    "local": {
+                                                        "type": "string",
+                                                        "description": "O local do espaço"
+                                                    },
+                                                    "lugares": {
+                                                        "type": "integer",
+                                                        "description": "O número de lugares disponíveis no espaço"
+                                                    },
+                                                    "situacao": {
+                                                        "type": "string",
+                                                        "description": "A situação do espaço (ativo, inativo, etc.)"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Espaços"
+                ]
+            }
+        },
+        "/gestaoEspaco/espacos/{id}": {
+            "get": {
+                "summary": "Obter espaço por ID",
+                "description": "Obtém os detalhes de um espaço pelo seu ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "ID do espaço a ser obtido"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Espaço obtido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "espacos": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id_espacos": {
+                                                        "type": "integer",
+                                                        "description": "O identificador único do espaço"
+                                                    },
+                                                    "local": {
+                                                        "type": "string",
+                                                        "description": "O local do espaço"
+                                                    },
+                                                    "lugares": {
+                                                        "type": "integer",
+                                                        "description": "O número de lugares disponíveis no espaço"
+                                                    },
+                                                    "situacao": {
+                                                        "type": "string",
+                                                        "description": "A situação do espaço (ativo, inativo, etc.)"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Espaço não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "sem resultados"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Espaços"
+                ]
+            }
+        },
+        "/gestaoEspaco": {
+            "post": {
+                "summary": "Criar novo espaço",
+                "description": "Cria um novo espaço com o nome e a quantidade de lugares especificados.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Nome": {
+                                        "type": "string",
+                                        "description": "O nome do novo espaço"
+                                    },
+                                    "Lugares": {
+                                        "type": "integer",
+                                        "description": "O número de lugares disponíveis no novo espaço"
+                                    }
+                                },
+                                "required": [
+                                    "Nome",
+                                    "Lugares"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Espaço criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "criado"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro ao criar espaço",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "erro"
+                                        },
+                                        "mensagem": {
+                                            "type": "string",
+                                            "example": "Mensagem de erro"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Espaços"
+                ]
+            },
+            "patch": {
+                "summary": "Alterar espaço existente",
+                "description": "Altera as informações de um espaço existente com o ID especificado.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Nome": {
+                                        "type": "string",
+                                        "description": "O novo nome do espaço"
+                                    },
+                                    "Lugares": {
+                                        "type": "integer",
+                                        "description": "O novo número de lugares disponíveis no espaço"
+                                    },
+                                    "Situacao": {
+                                        "type": "string",
+                                        "description": "A nova situação do espaço (ativo, inativo, etc.)"
+                                    },
+                                    "Id": {
+                                        "type": "integer",
+                                        "description": "O ID do espaço a ser alterado"
+                                    }
+                                },
+                                "required": [
+                                    "Nome",
+                                    "Lugares",
+                                    "Situacao",
+                                    "Id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Espaço alterado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "criado"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro ao alterar espaço",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resultado": {
+                                            "type": "string",
+                                            "example": "erro"
+                                        },
+                                        "mensagem": {
+                                            "type": "string",
+                                            "example": "Mensagem de erro"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Espaços"
+                ]
+            }
+        },
+        "/reservasOnline/reservas/{IdEspaco}/{dia}": {
+            "get": {
+                "summary": "Obter reservas por espaço e dia",
+                "description": "Obtém as reservas para um determinado espaço em um dia específico.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "local",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "O nome ou identificador do local"
+                    },
+                    {
+                        "in": "path",
+                        "name": "dia",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "description": "A data das reservas no formato AAAA-MM-DD"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Reservas obtidas com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "reservas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "data_reserva": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "description": "A data e hora da reserva no formato AAAA-MM-DD"
+                                                    },
+                                                    "horario": {
+                                                        "type": "string",
+                                                        "description": "O horário da reserva"
+                                                    },
+                                                    "id_espacos": {
+                                                        "type": "integer",
+                                                        "description": "O identificador único do espaço reservado"
+                                                    },
+                                                    "espaco": {
+                                                        "type": "string",
+                                                        "description": "O espaco da reserva"
+                                                    },
+                                                    "lugares": {
+                                                        "type": "integer",
+                                                        "description": "Quantidade de lugares do espaco"
+                                                    },
+                                                    "reservadoPor": {
+                                                        "type": "string",
+                                                        "description": "mostra o usuario que reservou o local"
+                                                    },
+                                                    "disponibilidade": {
+                                                        "type": "string",
+                                                        "description": "mostra se o local esta reservado ou nao"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Reservas"
+                ]
+            }
+        },
+        "/reservasOnline": {
+            "post": {
+              "summary": "Criar novas reservas",
+              "description": "Cria novas reservas  com as informações fornecidas.",
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "Reservas": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+
+                              "data_reserva": {
+                                "type": "string",
+                                "format": "date",
+                                "description": "A data e hora da reserva no formato ISO 8601"
+                              },
+                              "horario": {
+                                "type": "string",
+                                "description": "O horário da reserva"
+                              },
+                              "id_espacos": {
+                                "type": "integer",
+                                "description": "O ID do espaco que ira fazer a reserva"
+                              },
+                              "usuario_id": {
+                                "type": "integer",
+                                "description": "O ID do usuário que está fazendo a reserva"
+                              }
+                            },
+                            "required": ["data_reserva", "horario", "id_espacos", "usuario_id"]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "201": {
+                  "description": "Reservas criadas com sucesso",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "resultado": {
+                            "type": "string",
+                            "example": "criado"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "Erro ao criar reservas",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "resultado": {
+                            "type": "string",
+                            "example": "invalido"
+                          },
+                          "mensagem": {
+                            "type": "string",
+                            "example": "Mensagem de erro"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "tags": ["Reservas"]
+            },
+            "delete": {
+                "summary": "Remover reservas",
+                "description": "Remove a reserva com as informações fornecidas.",
+                "requestBody": {
+                  "required": true,
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "horario": {
+                            "type": "string",
+                            "description": "O horário da reserva a ser removida"
+                          },
+                          "id_espacos": {
+                            "type": "integer",
+                            "description": "O ID do espaço da reserva a ser removida"
+                          },
+                          "data_reserva": {
+                            "type": "string",
+                            "format": "date",
+                            "description": "A data da reserva a ser removida no formato AAAA-MM-DD"
+                          }
+                        },
+                        "required": ["Horario", "IdEspaco", "Data"]
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "200": {
+                    "description": "Reserva removida com sucesso",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "resultado": {
+                              "type": "string",
+                              "example": "removido"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "default": {
+                    "description": "Erro ao remover reserva",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "resultado": {
+                              "type": "string",
+                              "example": "invalido"
+                            },
+                            "mensagem": {
+                              "type": "string",
+                              "example": "Mensagem de erro"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "tags": ["Reservas"]
+              }
+          },
+          "/minhasReservas/{idUsuario}": {
+            "get": {
+              "summary": "Obter reservas do usuário",
+              "description": "Obtém as reservas associadas a um usuário específico.",
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "idUsuario",
+                  "required": true,
+                  "schema": {
+                    "type": "integer"
+                  },
+                  "description": "O ID do usuário"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Reservas obtidas com sucesso",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "reservas": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "data_reserva": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "A data e hora da reserva no formato AAAA-MM-DD"
+                                },
+                                "horario": {
+                                    "type": "string",
+                                    "description": "O horário da reserva"
+                                },
+                                "id_espacos": {
+                                    "type": "integer",
+                                    "description": "O identificador único do espaço reservado"
+                                },
+                                "espaco": {
+                                    "type": "string",
+                                    "description": "O espaco da reserva"
+                                },
+                                "lugares": {
+                                    "type": "integer",
+                                    "description": "Quantidade de lugares do espaco"
+                                },
+                                "reservadoPor": {
+                                    "type": "string",
+                                    "description": "mostra o usuario que reservou o local"
+                                },
+                                "disponibilidade": {
+                                    "type": "string",
+                                    "description": "mostra se o local esta reservado ou nao"
+                                }
+                            }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Nenhuma reserva encontrada para o usuário",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "resultado": {
+                            "type": "string",
+                            "example": "sem resultados"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "tags": ["Minhas Reservas"]
+            }
+          }
+    }
+}

@@ -1,0 +1,562 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+body {
+    background: var(--Cores-Cinza-Dark, #1E1F28);
+    height: 100%;
+    width: 100%;
+    padding: 0;
+
+    .modal-content {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border: 1px solid white;
+        background-color: #2c3440;
+        color: white;
+
+        .title {
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .description {
+            margin-top: 10px;
+            color: #c0c0c0;
+        }
+
+        .modal-title {
+            display: flex;
+            gap: 10%;
+            width: 100%;
+        }
+
+        button {
+            color: white;
+        }
+
+        #horarios-selecionados thead tr th,
+        #horarios-selecionados tbody tr,
+        #horarios-selecionados tbody td {
+            text-align: center;
+        }
+
+    }
+
+    header {
+        .bg-dark {
+            background-color: #1e1f28 !important;
+
+            .logo {
+                width: 300px;
+            }
+
+            .navbar-collapse {
+                justify-content: end;
+
+                .navbar-nav {
+                    font-size: 20px;
+                }
+
+            }
+        }
+    }
+
+    .conteudo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container-img {
+        width: 100%;
+        height: 320px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column-reverse;
+        background-position: center;
+        border-bottom: 1px white solid;
+        border-top: 1px white solid;
+    }
+
+    .index {
+        background-image: url(/public/img/banner-azul.png);
+    }
+
+    .reservas {
+        background-image: url(/public/img/6597dd757181f13ae23ec605_google-calendar-extension.svg);
+    }
+
+    .gestao {
+        background-image: url(/public/img/banner-amarelo.png);
+    }
+
+    .todas {
+        background-image: url(/public/img/banner-verde.png);
+    }
+
+    .container-form {
+        justify-content: center;
+        display: flex;
+
+        .form {
+            display: flex;
+            justify-content: center;
+            gap: 5%;
+            width: 90%;
+            height: 130px;
+            top: -50px;
+            position: relative;
+            border-radius: 10px;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border: 1px solid white;
+            background-color: #2c3440;
+            color: white;
+
+
+            @media (max-width: 500px) {
+                height: 250px;
+                padding: 5%;
+                flex-direction: column;
+            }
+        }
+
+        .form-input {
+            display: flex;
+            flex-direction: column;
+            align-content: flex-start;
+            width: 25%;
+
+            @media (max-width: 500px) {
+                width: 100%;
+            }
+
+            label {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .btn {
+                font-size: 20px;
+                font-weight: normal;
+                border-color: #fefefe;
+                border-radius: 15px;
+                gap: 5%;
+                display: flex;
+                justify-content: center;
+
+                &:hover {
+                    background-color: rgb(30 31 40);
+                }
+
+
+                @media (max-width: 500px) {
+                    font-size: 0px;
+                }
+            }
+
+            .btn-index {
+                background-color: rgb(5 88 125);
+            }
+
+            .btn-reserva {
+                background-color: rgb(89 54 187);
+            }
+
+
+            .form-options {
+                display: block;
+                width: 100%;
+                height: calc(2.25rem + 2px);
+                padding: 0.375rem 0.75rem;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: #ffffff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                border-radius: 0.25rem;
+                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                background-color: #ffffff24;
+
+                option {
+                    color: #ffffff;
+                    background-color: #1e1f28;
+                }
+            }
+        }
+    }
+
+    .container-outros {
+        display: flex;
+        justify-content: space-around;
+
+
+        @media (max-width: 500px) {
+            flex-direction: column;
+            gap: 10px;
+            padding: 30px;
+        }
+
+
+        .btn {
+            width: 30%;
+            height: 80px;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px solid white;
+            background-color: rgb(5 88 125);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: #2c3440;
+            }
+
+            img {
+                margin-right: 30px;
+            }
+
+            @media (max-width: 500px) {
+                width: 100%;
+            }
+
+        }
+    }
+
+    .container-infos {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+
+        @media (max-width: 500px) {
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .section {
+            text-align: center;
+            width: 24%;
+            padding: 20px;
+            transition: 0.3s;
+            border-radius: 5px;
+            border: 2px solid #d1d2d3;
+            background-color: #2c3440;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+
+            @media (max-width: 500px) {
+                width: 100%;
+            }
+
+            .section:hover {
+                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            }
+
+            .icon {
+                /* Adicione estilos para os ícones aqui */
+                font-size: 50px;
+                margin-bottom: 10px;
+            }
+
+            .title {
+                font-weight: bold;
+                font-size: 17px;
+            }
+
+            .description {
+                margin-top: 10px;
+                color: #6c757d;
+            }
+
+        }
+
+    }
+
+    .container-pesquisa {
+        color: white;
+        display: flex;
+        border-bottom: 2px solid #d1d2d3;
+        justify-content: space-between;
+        gap: 5%;
+        font-family: system-ui;
+        font-size: 17px;
+        margin: 0;
+        margin-left: 5%;
+        margin-right: 5%;
+
+
+        .gap {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            color: #4a515b;
+        }
+
+        button {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10%;
+            font-size: 20px;
+
+            img {
+                background: antiquewhite;
+                border-radius: 20px;
+            }
+        }
+
+    }
+
+    .gestao-espaco {
+        margin-top: 5%;
+    }
+
+    .minhas-reservas {
+        margin-top: 5%;
+        margin-bottom: 5%;
+
+    }
+
+    .container-botao-add {
+        margin: 0;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 5%;
+        margin-top: 10px;
+
+        button {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10%;
+            font-size: 20px;
+
+            img {
+                background: antiquewhite;
+                border-radius: 20px;
+            }
+        }
+
+        .none {
+            display: none;
+        }
+    }
+
+    .container-tabela {
+        color: white;
+        margin-bottom: 10%;
+        padding-left: 3px;
+        padding-right: 3px;
+
+        .table td,
+        .table th {
+            border-top: 1px solid #dee2e600;
+        }
+
+        .selecionado {
+            border: 2px solid #e0ff04;
+            background: #e8ff0069 !important;
+        }
+
+        .reservado {
+            background: #5936bb !important;
+            border: 2px solid #7c52f3;
+        }
+
+        .inativo {
+            background-color: #45454599 !important;
+        }
+
+        #table thead tr th,
+        #table tbody tr,
+        #table tbody td {
+            text-align: center;
+            text-wrap: nowrap;
+            font-size: 14px;
+        }
+
+        #table tbody tr {
+            cursor: pointer;
+        }
+
+        #table tbody {
+            background-color: #262833;
+        }
+
+        .btns-tabela {
+            display: flex;
+            justify-content: center;
+            gap: 3%;
+
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+
+        }
+
+        .fundo {
+            background: antiquewhite;
+            border-radius: 20px;
+        }
+    }
+
+    .container-form {
+
+        #datepicker {
+            cursor: pointer;
+        }
+
+        #datepicker::-webkit-input-placeholder {
+            color: white;
+        }
+
+    }
+
+    .ui-widget.ui-widget-content {
+        border: 1px solid #ced4da;
+        color: white;
+        background: #4a515b;
+    }
+
+
+    .reserva-selecionada {
+        display: flex;
+        gap: 10%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .espaco-selecionado {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+        gap: 20px;
+
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc(2.25rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ffffff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            background-color: #ffffff24;
+
+            option {
+                color: #ffffff;
+                background-color: #1e1f28;
+            }
+        }
+
+        div {
+            display: flex;
+            gap: 2%;
+            align-items: center;
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr;
+            text-align: left;
+        }
+    }
+
+    .btn-salvar-reserva {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .btn-salvar-reserva button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 3%;
+    }
+
+    footer {
+        color: white;
+        display: flex;
+        justify-content: center;
+        background: black;
+        font-size: 14px;
+
+    }
+
+    .body-loader {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
+        background-color: #59565694;
+
+        .loader {
+            width: 100px;
+            padding: 8px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #25b09b;
+            --_m:
+                conic-gradient(#0000 10%, #000),
+                linear-gradient(#000 0 0) content-box;
+            -webkit-mask: var(--_m);
+            mask: var(--_m);
+            -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+            animation: l3 1s infinite linear;
+        }
+
+        @keyframes l3 {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+    }
+
+    .swal2-popup {
+        background: black;
+        color: white;
+        border: 1px solid #7066e0;
+
+        .swal2-success-circular-line-left,
+        .swal2-success-fix,
+        .swal2-success-circular-line-right {
+            background-color: transparent;
+        }
+    }
+}

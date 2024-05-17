@@ -1,0 +1,236 @@
+body .page, body .modal-content .modal-footer, .flex {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+body form {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background: var(--Cores-Cinza-Dark, #1E1F28);
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  font-family: Outfit;
+}
+@media (max-width: 767px) {
+  body {
+    height: 100%;
+  }
+}
+
+@keyframes l3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+body .page .card {
+  border: 2px solid var(--Gradientes-Gradiente-Logo, #929294);
+  padding: 34px;
+  border-radius: 10px;
+  background-color: #343a40;
+  width: 50%;
+  max-width: 450px;
+  color: aliceblue;
+}
+@media (max-width: 767px) {
+  body .page .card {
+    width: 80%;
+    padding: 20px;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+body .page {
+  width: 100%;
+  height: 98vh;
+}
+body form {
+  gap: 1px;
+}
+body form .Pesquisa-nome-header {
+  border-radius: 15px;
+  color: #1e1f28;
+  padding: 5px 30px 6px 10px;
+  background-color: #2c3440;
+  color: white;
+  width: 300px;
+}
+@media (max-width: 999px) {
+  body form .Pesquisa-nome-header {
+    width: 90%;
+  }
+}
+body form .Pesquisa-nome {
+  border-radius: 15px;
+  color: #1e1f28;
+  padding: 5px 30px 6px 10px;
+  background-color: #2c3440;
+  color: white;
+  width: 500px;
+}
+body form .Pesquisa-nome::placeholder {
+  color: white;
+}
+@media (max-width: 600px) {
+  body form .Pesquisa-nome {
+    width: 230px;
+    margin: 1px;
+  }
+}
+body form #Titulo {
+  margin-top: 10px;
+}
+body form .campo {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  transition: all linear 190ms;
+  margin-bottom: 5px;
+  outline: none;
+  font-size: 0.9rem;
+  color: #444;
+}
+body form .campo::placeholder {
+  color: #666;
+}
+body form .campo:focus {
+  border-color: rgb(34, 193, 195);
+}
+@media (max-width: 767px) {
+  body form .campo {
+    font-size: 1rem;
+    color: #444;
+  }
+}
+@media (max-width: 767px) {
+  body form .link-modal {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  body form .link-modal a {
+    font-size: 1rem;
+  }
+}
+body form input[type=file] {
+  border: none;
+  color: aliceblue;
+}
+body .btn {
+  background-color: #1E1F28;
+  padding: 15px;
+  border: none;
+  color: aliceblue;
+  border-radius: 7px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all linear 190ms;
+}
+body .btn:hover {
+  transform: scale(1.05);
+}
+body .hidden {
+  opacity: -0.5;
+  color: #1E1F28;
+  background-color: #1E1F28;
+}
+body .grow {
+  transition: all 0.2s ease-in-out;
+}
+body .grow:hover {
+  transform: scale(1.2);
+}
+body span {
+  color: aliceblue;
+}
+body .modal-content {
+  border-radius: 10px;
+  border-radius: 10px;
+  background-color: #343a40;
+  color: aliceblue;
+}
+body .modal-content .modal-body,
+body .modal-content .modal-header,
+body .modal-content .modal-footer {
+  border: none;
+}
+body .modal-content .modal-footer .btn-novo {
+  width: 100%;
+  margin-top: 0;
+}
+body p {
+  font-size: 0.9rem;
+  color: aliceblue;
+  text-align: center;
+  text-decoration: none;
+}
+body a {
+  font-size: 0.9rem;
+  color: #f0f8ff;
+}
+body h2 {
+  font-size: 1.8rem;
+  color: aliceblue;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.swal2-popup {
+  background-color: #343a40;
+  color: aliceblue;
+}
+
+.body-loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  background-color: rgba(89, 86, 86, 0.5803921569);
+}
+.body-loader .loader {
+  width: 100px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #25b09b;
+  --_m:
+      conic-gradient(#0000 10%, #000),
+      linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/*# sourceMappingURL=login.css.map */
